@@ -1,58 +1,38 @@
-string Solution::longestPalindrome(string A) {
+string Solution::longestPalindrome(string s) {
 
-    if(A.size()==1){
-        return A;
-    }
-    string s1="",ans="";
-    int j,k,mx=0;
-    for(int i=1;i<A.size()-1;i++){
-        j=i-1,k=i+1;
-        stack<char> st;
-        while(j>=0 && k<A.size()){
-            if(A[j]==A[k]){
-                st.push(A[j]);
-                j--;
-                k++;
-            }else{
-                break;
-            }
-        }
-        if(st.size()>mx){
-            mx = st.size();
-        }
-    }
-    if(mx==0){
-        char ch = A[0];
-        string s = "";
-        s += ch;
-        ch = A[1];
-        s += ch;
-        return s;
-    }
-    for(int i=1;i<A.size()-1;i++){
-        j=i-1,k=i+1;
-        stack<char> st;
-        while(j>=0 && k<A.size()){
-            if(A[j]==A[k]){
-                st.push(A[j]);
-                j--;
-                k++;
-            }else{
-                break;
-            }
-        }
-        if(st.size()==mx){
-            while(!st.empty()){
-                s1 += st.top();
-                st.pop();
-            }
-            ans += s1;
-            reverse(s1.begin(),s1.end());
-            ans += A[i];
-            ans +=  s1;
+    int n=s.size();  
 
-            return ans;
+    if(n<2) return s;
+
+    int maxLen=1, start=0;
+
+    int low,high;
+
+        
+
+    for(int i=0;i<n;i++){
+
+        low=i-1,high=i+1;
+
+        while(high<n && s[high]==s[i]) high++;
+
+        while(low>=0 && s[low]==s[i]) low--;
+        
+        while(low>=0 && high<n && s[low]==s[high]){
+            high++;
+            low--;
+        }
+
+        int len=high-low-1;
+
+        if(maxLen < len){
+            maxLen=len;
+            start=low+1;
         }
     }
-    return ans;
+    if(maxLen==2){
+        return s.substr(0,2);
+    }
+    
+    return s.substr(start,maxLen);
 }
