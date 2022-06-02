@@ -2,7 +2,7 @@ string Solution::longestPalindrome(string s) {
 
     int n=s.size();  
 
-    if(n<2) return s;
+    if(n<3) return s;
 
     int maxLen=1, start=0;
 
