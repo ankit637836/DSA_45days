@@ -18,7 +18,7 @@ void solve(){
 	}
 	int ans = arr[n];
 	delete [] arr;
-	cout<<ans;
+	cout<<ans<<endl;
 
 }
 int main()
