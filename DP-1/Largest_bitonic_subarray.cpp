@@ -47,6 +47,10 @@ void solve(){
 	for(int i=0;i<n;i++){
 		cin>>arr[i];
 	}
+	if(n<=2){
+		cout<< n <<endl;
+		return;
+	}
 	int* frwd = LIS(arr,n);
 	int* bakw = R_LIS(arr,n);
 	
