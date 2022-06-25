@@ -1,4 +1,6 @@
-long M = 1e9 +7;
+/*
+ques link: https://www.hackerrank.com/challenges/construct-the-array/problem
+*/long M = 1e9 +7;
 long countArray(int n, int k, int x) {
     // Return the number of ways to fill in the array.
     long oneC = 1;
